@@ -1,10 +1,13 @@
 use axum::{
     body::Body,
     http::StatusCode,
-    response::{IntoResponse, Response},
+    response::{IntoResponse, Response}, extract::State,
 };
 
-pub async fn hello() -> impl IntoResponse {
+use crate::AppState;
+
+pub async fn hello(State(data): State<AppState>) -> impl IntoResponse {
+    dbg!(data);
     Response::builder()
         .status(StatusCode::OK)
         .body(Body::from("Hello world"))

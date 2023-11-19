@@ -20,8 +20,8 @@ pub mod api {
 mod routes;
 
 #[derive(Clone, Debug)]
-struct AppState {
-    db_pool: PgPool,
+pub struct AppState {
+    pub db_pool: PgPool,
 }
 
 #[tokio::main]
@@ -31,7 +31,7 @@ async fn main() {
     let pool = PgPool::connect(&url).await.unwrap();
     let state = AppState { db_pool: pool };
 
-    let app = Router::new().with_state(state).merge(routes::configure());
+    let app = Router::new().with_state(state.clone()).merge(routes::configure(state));
 
     let address = SocketAddr::from(([127, 0, 0, 1], 8000));
     println!("listening on {}", address);
