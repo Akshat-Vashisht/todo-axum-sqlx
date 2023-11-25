@@ -1,10 +1,10 @@
 # AXUM TODO APP
 
 ## Tech Stack
-- *Language:* Rust
-- *Framework:* Axum
-- *Database:* PostgreSQL
-- *DB interaction:* sqlx
+- **Language:** Rust
+- **Framework:** Axum
+- **Database:** PostgreSQL
+- **DB interaction:** sqlx
 
 Simple TODO App implemented in Rust.
 
