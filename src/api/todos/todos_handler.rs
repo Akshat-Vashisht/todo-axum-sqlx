@@ -45,11 +45,9 @@ pub async fn create_todo(
     .await;
 
     match query_result {
-        Ok(category) => return Json(json!({"Status":"Success","Data":category})),
+        Ok(category) => Json(json!({"Status":"Success","Data":category})),
 
-        Err(e) => {
-            return Json(json!({"Status": "Failed","Description": format!("{:?}", e)}));
-        }
+        Err(e) => Json(json!({"Status": "Failed","Description": format!("{:?}", e)})),
     }
 }
 
